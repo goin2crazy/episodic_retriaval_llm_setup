@@ -1,0 +1,15 @@
+session_type: "llm"
+model_id: "unsloth/Qwen2.5-Coder-7B-bnb-4bit"
+tokenizer_id: "Qwen/Qwen2.5-Coder-7B"
+
+embedding_model_id: "sentence-transformers/all-MiniLM-L6-v2"
+embedding_tokenizer_id: "sentence-transformers/all-MiniLM-L6-v2"
+
+memories_dir: "/content/drive/MyDrive/llm_memories"
+
+batch_size: 16
+variance_scaling_factor: 0.6
+threshold: "None"
+
+k_memmories: 10
+k_top_k_memmories: 6 

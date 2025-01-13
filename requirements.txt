@@ -1,0 +1,5 @@
+qwen-vl-utils
+torch
+accelerate==0.32.1
+bitsandbytes==0.43.1
+transformers
