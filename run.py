@@ -121,3 +121,6 @@ def run_chat():
                                     top_k_memmories = config['k_top_k_memmories']
                                     )
     chat.start_conversation()
+
+if __name__ == "__main__": 
+    run_chat() 
