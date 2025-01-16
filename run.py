@@ -67,13 +67,13 @@ def run_chat():
     elif config['session_type'] == 'vllm':
         processor = AutoProcessor.from_pretrained(model_id)
 
-    device_0 = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
-    model = AutoModelForImageTextToText.from_pretrained(
-        model_id,
-        device_map=device_0,
-        use_cache=False,
-        trust_remote_code=True,
-        )
+        device_0 = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
+        model = AutoModelForImageTextToText.from_pretrained(
+            model_id,
+            device_map=device_0,
+            use_cache=False,
+            trust_remote_code=True,
+            )
 
     # model1 = AutoModelForImageTextToText.from_pretrained(
     #     model_id,

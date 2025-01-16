@@ -1,6 +1,6 @@
 session_type: "llm"
-model_id: "unsloth/Qwen2.5-Coder-7B-bnb-4bit"
-tokenizer_id: "Qwen/Qwen2.5-Coder-7B"
+model_id: "unsloth/Qwen2.5-Coder-3B-bnb-4bit"
+tokenizer_id: "Qwen/Qwen2.5-Coder-3B"
 
 embedding_model_id: "sentence-transformers/all-MiniLM-L6-v2"
 embedding_tokenizer_id: "sentence-transformers/all-MiniLM-L6-v2"
