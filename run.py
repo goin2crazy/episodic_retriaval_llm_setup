@@ -102,8 +102,8 @@ def run_chat():
         # (Episodic Config)
     class EpisodicSupriseSetupConfig:
         batch_size = config['batch_size']
-        variance_scaling_factor  = config['variance_scaling_factor']
-        threshold = config['threshold']
+        scaling_factor  = config['variance_scaling_factor']
+        threshold = None if config['threshold'] == "None" else config['threshold']
 
         # Needed arguments for chat:
         # Episodic_config,
