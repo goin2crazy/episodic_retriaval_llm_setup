@@ -134,6 +134,7 @@ class LongMemmoryAssistant(Assistant):
         self.executor = ThreadPoolExecutor(max_workers=1)  # For background execution
 
     def remember_for_long(self, message: str):
+        print("[Setting the boundaries refinement to background, waiting for response...]")
         def process_remember(message):
             # Minimize GPU memory usage
             with torch.no_grad():
@@ -143,6 +144,8 @@ class LongMemmoryAssistant(Assistant):
                 history_events, refined_boundaries = episodic_suprise_setup_v2(
                     surprise_scores, similarity_matrix, tokens, self.episodic_config
                 )
+
+                print(f"refined {len(history_events)} events")
                 for event in history_events:
                     if len(event):
                         # Store event with timestamp
@@ -150,5 +153,5 @@ class LongMemmoryAssistant(Assistant):
 
         # Submit the process_remember task to the executor
         self.executor.submit(process_remember, message)
-
+        print("[Background exexutiong done]")
         return None

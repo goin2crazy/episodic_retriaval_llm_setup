@@ -1,4 +1,4 @@
-from chat_template_llm import LongMemmoryAssistant
+
 from transformers import (AutoTokenizer,
                           AutoModel,
                           AutoModelForCausalLM,
