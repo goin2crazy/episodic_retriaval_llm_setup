@@ -120,7 +120,8 @@ def run_chat():
                                     k_memmories = config['k_memmories'],
                                     top_k_memmories = config['k_top_k_memmories']
                                     )
-    chat.start_conversation()
+    return chat
 
 if __name__ == "__main__": 
-    run_chat() 
+    chat = run_chat() 
+    chat.start_conversation()

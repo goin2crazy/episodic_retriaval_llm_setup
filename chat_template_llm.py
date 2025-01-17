@@ -44,6 +44,7 @@ class Assistant:
 
         system_prompt = create_system_prompt(retrieved_memmories_text, retrieved_memmories_time)
         self.conversation = [*self.conversation[:-1], {'role': 'system', 'content': system_prompt}]
+        return retrieved_memmories_text
 
 
     def process_message(self, message):
@@ -95,8 +96,21 @@ class Assistant:
         Begin the conversation loop, taking user input and generating responses.
         """
         while True:
-            user_input = self.user_input()  # Get user input
-            self.update_system_prompt(user_input)  # Update system prompt
+            user_input = self.user_input()
+            response = " ".join(list(self.message_cicle(user_input)))
+
+            self.update_conversation(response)
+
+            self.store_assistant_output(response) 
+
+
+    def message_cicle(self, message): 
+
+            if len(self.last_response): 
+                self.update_conversation(self.last_response)
+
+            user_input = message  # Get user input
+            memories = self.update_system_prompt(user_input)  # Update system prompt
 
             generation_kwargs, streamer = self.process_message(user_input)  # Process message
 
@@ -107,17 +121,15 @@ class Assistant:
                 thread = Thread(target=self.model.generate, kwargs=generation_kwargs)
                 thread.start()
                 generated_text = ""
-                for new_text in streamer:
+                for i, new_text in enumerate(streamer):
                     generated_text += new_text
 
 
                     self.store_assistant_output(generated_text)  # Store assistant output
+                    self.last_response = generated_text
 
                     print(new_text, end='', flush=True)
-
-                # Update the conversation with the assistant's response
-                self.update_conversation(generated_text)
-
+                    yield new_text 
 
     # fns for in cases for further customatization
     def user_input(self,):
@@ -126,7 +138,7 @@ class Assistant:
     def store_assistant_output(self, output:str):
         return output
     
-
+    
 class LongMemmoryAssistant(Assistant):
     def __init__(self, episodic_config, *args, **kwargs):
         super().__init__(*args, **kwargs)
