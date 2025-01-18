@@ -13,22 +13,16 @@ threshold: "None"
 
 k_memmories: 10
 k_top_k_memmories: 6 
-share_gradio: 1 es: 6 
 
 gradio_config:
-  height: 400  # Height of the chatbot widget
-  textbox_placeholder: "want to talk with you about my day"  # Placeholder for the textbox
-  textbox_container: false  # Whether to show the container for the textbox
-  textbox_scale: 7  # Scale of the textbox
-  title: " ... "  # Title of the interface
-  description: "Talk about any theme"  # Description of the interface
-  theme: "ocean"  # Theme of the interface
-  examples:  # Example inputs for the chatbot
-    - "lets play "debates" game!"
-    - "lets practive english"
-    - "i feel lonely"
-  cache_examples: true  # Whether to cache examples
-share_gradio: true  # Whether to enable Gradio sharing
+  height: 400 
+  textbox_placeholder: "want to talk with you about my day"
+  textbox_container: false 
+  textbox_scale: 7
+  title: " ... "  
+  description: "Can talk here about everything" 
+  theme: "ocean" 
+  cache_examples: true 
 
+share_gradio: true
 
-# model unsloth/mistral-7b-instruct-v0.3-bnb-4bit

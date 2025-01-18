@@ -44,7 +44,8 @@ class Assistant:
         retrieved_memmories_time = [retrieved_memmories_time[i] for i in top_k_ids]
 
         system_prompt = create_system_prompt(retrieved_memmories_text, retrieved_memmories_time)
-        self.conversation = [*self.conversation[:-1], {'role': 'system', 'content': system_prompt}]
+        self.conversation = [{'role': 'system', 'content': system_prompt}, *[r for r in self.conversation if r['role'] != 'system']]
+        print("[Updated conversation]")
         return retrieved_memmories_text
 
 

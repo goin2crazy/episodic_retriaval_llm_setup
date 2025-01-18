@@ -28,6 +28,5 @@ if __name__ == "__main__":
         title=gconfig['title'],
         description=gconfig['description'],
         theme=gconfig['theme'],
-        examples=gconfig['examples'],
         cache_examples=gconfig['cache_examples'],
     ).launch(share=config['share_gradio'])
