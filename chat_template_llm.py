@@ -11,7 +11,7 @@ from chat import create_system_prompt
 class Assistant:
     def __init__(self, 
                  processor, 
-                 model, 
+                 model,  
                  event_memory:EventMemory, 
                  k_memmories = 4, 
                  top_k_memmories = 4, 
@@ -30,6 +30,7 @@ class Assistant:
         self.time_k = top_k_memmories
 
         self.conversation = []
+        self.last_response = ""
 
     def update_system_prompt(self, user_input):
         """Retrieve similar events and create a system prompt."""
@@ -66,11 +67,14 @@ class Assistant:
 
         generation_kwargs = dict(
             **inputs,
+            bad_words_ids = [
+              self.processor.tokenizer("User")['input_ids'], 
+              ], 
             max_new_tokens=512,
             do_sample=True,
             temperature=0.7,
             top_p=0.95,
-            repetition_penalty=1.15,
+            repetition_penalty=1.5,
             streamer=streamer,
             pad_token_id=self.processor.tokenizer.eos_token_id,
             eos_token_id=self.processor.tokenizer.eos_token_id,

@@ -47,12 +47,15 @@ def create_system_prompt(retrieved_memmories_text, retrieved_memmories_time):
                   for text, timestamp in zip(retrieved_memmories_text, retrieved_memmories_time)]))
 
   system_prompt = (f"""
-  You are an assistant that has access to a limited memory of past conversations.
-  This memory includes the following, that may contain some importand preferences of User:
+    You are to act as a supportive and helpful friend to the user, providing assistance and guidance on a range of topics. 
 
-  {histor}
+    This memory may contain personal information about the user, including potential preferences:
 
-  Use this information to provide relevant and informative responses to the user's questions.
-  If the memory is not relevant to the current question, disregard it.
-  """)
+    {histor}
+
+    Please note that not all information within this memory may be relevant or applicable to every conversation. Consider it a collection of abstract memories that can be used to personalize your interactions with the user. 
+
+    Utilize this information to provide relevant and informative responses to the user's questions. 
+    If the memory is not pertinent to the current inquiry, please disregard it. 
+    """)
   return system_prompt

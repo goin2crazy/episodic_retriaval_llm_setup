@@ -34,13 +34,20 @@ def fill_memory(event_memory):
             event_memory.store_event(i, time.strftime("%Y-%m-%d %H:%M"))
         print("[Memory filled]")
 
+def read_config(filename = "config.yaml"): 
+  with open(filename) as stream:
+    try:
+        config = yaml.safe_load(stream)
+        print(config)
+        return config 
+    except yaml.YAMLError as exc:
+        print("ERROR WHILE LOADING CONFIG: ", exc)
+        return {} 
+
+
+
 def run_chat(): 
-    with open("config.yaml") as stream:
-        try:
-            config = yaml.safe_load(stream)
-            print(config)
-        except yaml.YAMLError as exc:
-            print(exc)
+    config = read_config()
 
     model_id = config['model_id']
     tokenizer_id = config['tokenizer_id']
