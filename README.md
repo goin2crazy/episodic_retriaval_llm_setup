@@ -63,6 +63,8 @@ Look at the config.yaml
 - k_memmories: 20 **-> Retrieval uses the K-nearest to find relative memories (this parameter supposed to be bigger than k_top_k_memmories)** 
 - k_top_k_memmories: 12 **-> the most relative memories that filtered by k_memories and sorts by time and takes newest memories, limited by this parameter** 
 
+![logs in the console so you can track and watch suprise scores, boundaries and etc.](images/logs.png)
+
 gradio_config:
   height: 400 
   textbox_placeholder: "want to talk with you about my day"
@@ -70,10 +72,13 @@ gradio_config:
   textbox_scale: 7
   title: " ... "  
   description: "Can talk here about everything" 
-  theme: "soft" 
+  theme: "soft" **you can explore cosy themes there https://www.gradio.app/guides/theming-guide** 
   cache_examples: true 
 
 - share_gradio: true **-> If you run from Colab, please make sure that there true** 
+
+![conversation with model about ppl](images/image.png)
+![conversation where model remembred that i asked about newton laws](images/chat.png)
 
 ## Experiment Notebook 
 
