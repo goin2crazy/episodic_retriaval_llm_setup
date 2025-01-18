@@ -1,6 +1,6 @@
 session_type: "llm"
-model_id: "unsloth/mistral-7b-instruct-v0.3-bnb-4bit"
-tokenizer_id: "mistralai/Mistral-7B-Instruct-v0.3"
+model_id: "unsloth/Meta-Llama-3.1-8B-Instruct-bnb-4bit"
+tokenizer_id: "unsloth/Meta-Llama-3.1-8B-Instruct-bnb-4bit"
 
 embedding_model_id: "sentence-transformers/all-MiniLM-L6-v2"
 embedding_tokenizer_id: "sentence-transformers/all-MiniLM-L6-v2"
@@ -11,17 +11,17 @@ batch_size: 16
 variance_scaling_factor: 0.6
 threshold: "None"
 
-k_memmories: 10
-k_top_k_memmories: 6 
+k_memmories: 20
+k_top_k_memmories: 12
 
 gradio_config:
   height: 400 
   textbox_placeholder: "want to talk with you about my day"
-  textbox_container: false 
+  textbox_container: ture 
   textbox_scale: 7
   title: " ... "  
   description: "Can talk here about everything" 
-  theme: "ocean" 
+  theme: "soft" 
   cache_examples: true 
 
 share_gradio: true
